@@ -26,3 +26,11 @@ question1.innerHTML = `
 `;
 // Appending the new element to the body of the document
 document.body.appendChild(question1);
+// Function to handle button click event
+// function openHTML() {
+//   // Change the location to the new HTML file
+//   window.location.href=""
+// }
+
+// // Attach the function to the button click event
+// document.getElementById("start").addEventListener("click", openHTML());
