@@ -16,3 +16,13 @@ const quizQuestions = [
     correctAnswer: "Rome",
   },
 ];
+// Creating a new HTML element
+const question1 = document.createElement("div");
+
+// Setting content for the new element
+question1.innerHTML = `
+  <h1>${quizQuestions[0].question}</h1>
+  <p>${quizQuestions[0].options.join(", ")}</p>
+`;
+// Appending the new element to the body of the document
+document.body.appendChild(question1);
