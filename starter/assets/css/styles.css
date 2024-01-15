@@ -12,7 +12,9 @@ a {
 a:hover {
   color: #8570a5;
 }
-
+#start {
+  color: white;
+}
 button {
   display: inline-block;
   margin: 5px;
