@@ -27,3 +27,25 @@ optionsListElement.appendChild(listItem0);
 optionsListElement.appendChild(listItem1);
 optionsListElement.appendChild(listItem2);
 optionsListElement.appendChild(listItem3);
+
+//adding event listener for the click of the button
+listItem0.addEventListener("click", function (event) {
+  event.preventDefault();
+  var clickedButton = city[0];
+  console.log(clickedButton);
+});
+listItem1.addEventListener("click", function (event) {
+  event.preventDefault();
+  var clickedButton = city[1];
+  console.log(clickedButton);
+});
+listItem2.addEventListener("click", function (event) {
+  event.preventDefault();
+  var clickedButton = city[2];
+  console.log(clickedButton);
+});
+listItem3.addEventListener("click", function (event) {
+  event.preventDefault();
+  var clickedButton = city[3];
+  console.log(clickedButton);
+});
