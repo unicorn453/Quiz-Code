@@ -88,3 +88,8 @@ li:nth-child(odd) {
   top: 10px;
   right: 10px;
 }
+#optionsList {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
