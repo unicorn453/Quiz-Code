@@ -30,21 +30,42 @@ optionsListElement.appendChild(listItem3);
 //adding event listener for the click of the button
 listItem0.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[0];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
+
 listItem1.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[1];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
 listItem2.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[2];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
 listItem3.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[3];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });

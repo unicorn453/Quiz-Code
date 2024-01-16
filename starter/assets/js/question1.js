@@ -27,6 +27,7 @@ optionsListElement.appendChild(listItem0);
 optionsListElement.appendChild(listItem1);
 optionsListElement.appendChild(listItem2);
 optionsListElement.appendChild(listItem3);
+var result = document.querySelector(".result");
 
 //This code implies various ways for execution that do not include repetitive code but did not work.
 // for (const city of optionCities) {
@@ -40,22 +41,49 @@ optionsListElement.appendChild(listItem3);
 //adding event listener for the click of the button
 listItem0.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[0];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
 
 listItem1.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[1];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
 listItem2.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[2];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
 listItem3.addEventListener("click", function (event) {
   event.preventDefault();
-  var clickedButton = city[3];
-  console.log(clickedButton);
+  var clickedButton = this;
+
+  if (this === listItem2) {
+    result.innerHTML = "Correct";
+  } else {
+    result.innerHTML = "Wrong";
+  }
 });
+// console.log(clickedButton);
+
+// if (this === listItem2) {
+//   console.log("Correct");
+// } else {
+//   console.log("Wrong");
+// }
