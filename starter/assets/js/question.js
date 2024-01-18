@@ -21,7 +21,6 @@ const quizQuestions = [
   },
 ];
 // adding sound
-
 const correctSound = document.getElementById("correctSound");
 const incorrectSound = document.getElementById("incorrectSound");
 function playCorrectSound() {
@@ -32,14 +31,13 @@ function playIncorrectSound() {
 }
 
 var modal = document.getElementById("customModal");
-var result = document.getElementById("result");
+var globalResult = document.getElementById("result");
 let currentQuestionIndex = 0;
-
+let currentMessage;
 function showQuestions() {
-  const title = document.getElementById("title");
+  const title1 = document.getElementById("title");
   const optionsListElement = document.getElementById("optionsList");
-
-  title.innerHTML = quizQuestions[currentQuestionIndex].question;
+  title1.innerHTML = quizQuestions[currentQuestionIndex].question;
   optionsListElement.innerHTML = "";
 
   const options = quizQuestions[currentQuestionIndex].options;
@@ -58,28 +56,29 @@ function showQuestions() {
 
   var correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
   var result = document.getElementById("result");
-
   function showMessage(clickedButton) {
-    var message =
+    var currentMessage =
       clickedButton.textContent === correctAnswer ? "Correct" : "Wrong";
-    result.textContent = message;
+    globalResult.textContent = currentMessage;
+    result.textContent = currentMessage;
     modal.style.display = "block";
-    if (message === "Wrong") {
+    if (currentMessage === "Wrong") {
       substractTime();
     }
     setTimeout(function () {
       modal.style.display = "none";
-      nextQuestion();
-      if (message === "Correct") {
+      nextQuestion(currentMessage);
+      if (currentMessage === "Correct") {
         playCorrectSound();
       } else {
         playIncorrectSound();
       }
+      seMessage();
     }, 500);
   }
 }
 
-function nextQuestion() {
+function nextQuestion(message) {
   currentQuestionIndex++;
 
   if (currentQuestionIndex < quizQuestions.length) {
@@ -109,13 +108,11 @@ var mainEl = document.getElementById("time");
 var secondsLeft = 75;
 
 function setTime() {
-  // Sets interval in variable
   var timerInterval = setInterval(function () {
     secondsLeft--;
     mainEl.textContent = secondsLeft;
 
     if (secondsLeft === 0) {
-      // Stops execution of action at set interval
       clearInterval(timerInterval);
       window.location.href = "highscores.html";
       sendMessage();
@@ -123,7 +120,6 @@ function setTime() {
   }, 1000);
 }
 
-// Function to create and append colorsplosion image
 function sendMessage() {
   timeEl.textContent = " ";
 }
@@ -135,4 +131,22 @@ function substractTime() {
   if (result.textContent === "Wrong") {
     secondsLeft -= 10; // Subtract 10 seconds
   }
+}
+function seMessage() {
+  var scores = JSON.parse(localStorage.getItem("scores")) || [];
+  var currentScore = {
+    score: calculateScore(),
+  };
+  scores.push(currentScore);
+  localStorage.setItem("scores", JSON.stringify(scores));
+}
+
+function calculateScore() {
+  var currentScore = 0;
+
+  if (globalResult.textContent === "Correct") {
+    currentScore += 1;
+  }
+
+  return currentScore;
 }
