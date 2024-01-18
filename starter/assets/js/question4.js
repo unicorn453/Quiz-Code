@@ -38,28 +38,28 @@ listItem0.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
   clicked();
-  showMessage();
+  showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 1
 listItem1.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
   clicked();
-  showMessage();
+  showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 2
 listItem2.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
   clicked();
-  showMessage();
+  showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 3
 listItem3.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
   clicked();
-  showMessage();
+  showMessage(clickedButton);
 });
 
 function clicked(clickedButton) {
@@ -70,14 +70,24 @@ function clicked(clickedButton) {
     window.location.href = "highscores.html";
   }
 }
-function showMessage(message) {
+function showMessage(clickedButton) {
   var modal = document.getElementById("customModal");
   var result = document.getElementById("result");
-  // adding if else statement so the message is based on the condition
-  if (this === listItem1) {
-    message = "Correct";
+  // adding message to local storage
+  var storedMessage = localStorage.getItem("storedMessage");
+  // clear store message after retrieving
+  if (storedMessage) {
+    message = storedMessage;
+    localStorage.removeItem("storedMessage");
   } else {
-    message = "Wrong";
+    // adding if else statement so the message is based on the condition
+    if (clickedButton.textContent === correctAnswer) {
+      message = "Correct";
+    } else {
+      message = "Wrong";
+    }
+    // storing the message to the local storage
+    localStorage.setItem("storedMessage", message);
   }
   result.textContent = message;
   modal.style.display = "block";
