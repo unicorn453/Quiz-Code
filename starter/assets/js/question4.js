@@ -37,34 +37,33 @@ var result = document.getElementById("result");
 listItem0.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-  clicked();
+
   showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 1
 listItem1.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-  clicked();
+
   showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 2
 listItem2.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-  clicked();
+
   showMessage(clickedButton);
 });
 // //adding event listener for the click of the button of Item 3
 listItem3.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-  clicked();
+
   showMessage(clickedButton);
 });
 
 function clicked(clickedButton) {
   if (clickedButton === correctAnswer) {
-    clearInterval(functionThatIncludesSetInterval);
     window.location.href = "highscores.html";
   } else {
     window.location.href = "highscores.html";
@@ -73,27 +72,15 @@ function clicked(clickedButton) {
 function showMessage(clickedButton) {
   var modal = document.getElementById("customModal");
   var result = document.getElementById("result");
-  // adding message to local storage
-  var storedMessage = localStorage.getItem("storedMessage");
-  // clear store message after retrieving
-  if (storedMessage) {
-    message = storedMessage;
-    localStorage.removeItem("storedMessage");
-  } else {
-    // adding if else statement so the message is based on the condition
-    if (clickedButton.textContent === correctAnswer) {
-      message = "Correct";
-    } else {
-      message = "Wrong";
-    }
-    // storing the message to the local storage
-    localStorage.setItem("storedMessage", message);
-  }
+  var message =
+    clickedButton.textContent === quizQuestions[0].correctAnswer
+      ? "Correct"
+      : "Wrong";
   result.textContent = message;
   modal.style.display = "block";
 
-  // Hide the modal after a delay (e.g., 2 seconds)
   setTimeout(function () {
     modal.style.display = "none";
-  }, 5000);
+    clicked(clickedButton);
+  }, 500);
 }
