@@ -64,7 +64,9 @@ function showQuestions() {
       clickedButton.textContent === correctAnswer ? "Correct" : "Wrong";
     result.textContent = message;
     modal.style.display = "block";
-
+    if (message === "Wrong") {
+      substractTime();
+    }
     setTimeout(function () {
       modal.style.display = "none";
       nextQuestion();
@@ -115,7 +117,7 @@ function setTime() {
     if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to create and append image
+      window.location.href = "highscores.html";
       sendMessage();
     }
   }, 1000);
@@ -124,9 +126,13 @@ function setTime() {
 // Function to create and append colorsplosion image
 function sendMessage() {
   timeEl.textContent = " ";
-  //   var imgEl = document.createElement("img");
-  //   imgEl.setAttribute("src", "images/image_1.jpg");
-  //   mainEl.appendChild(imgEl);
 }
 
 setTime();
+function substractTime() {
+  var result = document.getElementById("result");
+
+  if (result.textContent === "Wrong") {
+    secondsLeft -= 10; // Subtract 10 seconds
+  }
+}
