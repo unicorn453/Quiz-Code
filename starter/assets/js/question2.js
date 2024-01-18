@@ -28,45 +28,84 @@ optionsListElement.appendChild(listItem1);
 optionsListElement.appendChild(listItem2);
 optionsListElement.appendChild(listItem3);
 
-//adding event listener for the click of the button
+var correct = "Correct"; // You can assign any value to resultContent
+var incorrect = "Wrong";
+var correctAnswer = quizQuestions[0].correctAnswer;
+var result = document.getElementById("result");
+
+// //adding event listener for the click of the button of Item 0
 listItem0.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-
-  if (this === listItem2) {
-    result.innerHTML = "Correct";
-  } else {
-    result.innerHTML = "Wrong";
-  }
+  clicked();
+  showMessage();
 });
-
+// //adding event listener for the click of the button of Item 1
 listItem1.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-
-  if (this === listItem2) {
-    result.innerHTML = "Correct";
-  } else {
-    result.innerHTML = "Wrong";
-  }
+  clicked();
+  showMessage();
 });
+// //adding event listener for the click of the button of Item 2
 listItem2.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-
-  if (this === listItem2) {
-    result.innerHTML = "Correct";
-  } else {
-    result.innerHTML = "Wrong";
-  }
+  clicked();
+  showMessage();
 });
+// //adding event listener for the click of the button of Item 3
 listItem3.addEventListener("click", function (event) {
   event.preventDefault();
   var clickedButton = this;
-
-  if (this === listItem2) {
-    result.innerHTML = "Correct";
-  } else {
-    result.innerHTML = "Wrong";
-  }
+  clicked();
+  showMessage();
 });
+
+function clicked(clickedButton) {
+  if (clickedButton === correctAnswer) {
+    clearInterval(functionThatIncludesSetInterval);
+    window.location.href = "question3.html";
+  } else {
+    window.location.href = "question3.html";
+  }
+}
+function showMessage(message) {
+  var modal = document.getElementById("customModal");
+  var result = document.getElementById("result");
+  // adding if else statement so the message is based on the condition
+  if (this === listItem1) {
+    message = "Correct";
+  } else {
+    message = "Wrong";
+  }
+  result.textContent = message;
+  modal.style.display = "block";
+
+  // Hide the modal after a delay (e.g., 2 seconds)
+  setTimeout(function () {
+    modal.style.display = "none";
+  }, 5000);
+}
+
+// // Previous attempts
+// listItem1.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   var clickedButton = this;
+
+//   if (this === listItem2) {
+//     result.innerHTML = "Correct";
+//   } else {
+//     result.innerHTML = "Wrong";
+//   }
+// });
+// listItem2.addEventListener("click", function (event) {
+//   event.preventDefault();
+//   var clickedButton = this;
+
+//   if (this === listItem2) {
+//     result.innerHTML = "Correct";
+//   } else {
+//     result.innerHTML = "Wrong";
+//   }
+// });
