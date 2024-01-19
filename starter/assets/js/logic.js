@@ -42,3 +42,11 @@ function getUserInitials() {
 }
 
 getUserInitials();
+
+// clear highscores
+var clearScores = document.getElementById("clear");
+clearScores.addEventListener("click", function () {
+  localStorage.removeItem("userInitials");
+  localStorage.removeItem("scores");
+  highScores.innerHTML = "";
+});
